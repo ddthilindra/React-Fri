@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react/jsx-no-undef */
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Namelist from "./Component/Pages/NameList";
+import Home from "./Component/Pages/Home/Home";
+import About from "./Component/Pages/About/About";
+import Headerbar from "./Component/Header/HeaderBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Headerbar />
+          <Switch>
+            <Route path="/about" exact component={About} />
+            <Route path="/name" exact component={Namelist} />
+            <Route path="/" exact component={Home} />
+          </Switch>
+      </Router>
+
+      {/* <Router>
+      <Headerbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" exact component={About} />
+          <Route path="/name" exact component={Namelist} />
+        </Switch>
+      </Router> */}
     </div>
   );
 }
